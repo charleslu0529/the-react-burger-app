@@ -82,7 +82,15 @@ class BurgerBuilder extends React.Component {
     }
 
     purchaseHandler = () => {
-        this.setState({purchasing: true})
+        this.setState({purchasing: true});
+    }
+
+    purchaseCancel = () => {
+        this.setState({purchasing: false});
+    }
+
+    purchaseContinueHandler = () => {
+        alert('You purchased!');
     }
 
     render() {
@@ -95,8 +103,12 @@ class BurgerBuilder extends React.Component {
 
         return (
             <Auxiliary>
-                <Modal show={this.state.purchasing}>
-                    <OrderSummary ingredients={this.state.ingredients}/>
+                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancel}>
+                    <OrderSummary
+                        ingredients={this.state.ingredients}
+                        totalPrice={this.state.totalPrice}
+                        purchaseCancelled={this.purchaseCancel}
+                        purchaseContinue={this.purchaseContinueHandler}/>
                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls 
@@ -106,7 +118,6 @@ class BurgerBuilder extends React.Component {
                     price={this.state.totalPrice}
                     purchasable = {this.state.purchasable}
                     ordered={this.purchaseHandler}/>
-                    
             </Auxiliary>
         );
     }
