@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is based off of the Complete React Guide created by Maximilian Schwarzmüller
+
 
 ## Available Scripts
 
